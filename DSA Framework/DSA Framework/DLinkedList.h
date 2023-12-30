@@ -29,6 +29,8 @@ public:
     bool contains(T item);
     void toString();
     void toString2();
+    Node* getHead() { return this->head; }
+    Node* getTail() { return this->tail; }
 
 public:
     class Node {
@@ -236,8 +238,14 @@ void DLinkedList<T>::removeItem(T item) {
     // Case 1: Head
     if (this->head->data == item) {
         delPtr = this->head;
-        this->head = this->head->next;
-        this->head->prev = NULL;
+        if (this->count == 1) {
+            this->head = NULL;
+            this->tail = NULL;
+        }
+        else {
+            this->head = this->head->next;
+            this->head->prev = NULL;
+        }
         delPtr->prev = NULL;
     }
     // Case 2: Others

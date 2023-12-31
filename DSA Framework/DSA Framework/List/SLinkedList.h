@@ -179,7 +179,11 @@ void SLinkedList<T>::removeItem(T item) {
 	// Case 1: Head
 	if (this->head->data == item) {
 		delPtr = this->head;
-		this->head = this->head->next;
+		if (this->count == 1) {
+			this->head = NULL;
+			this->tail = NULL;
+		}
+		else this->head = this->head->next;
 	}
 	// Case 2: Others
 	else {

@@ -12,6 +12,7 @@ int solution(int N) {
     int check = 0;
     bool flag = 0;
     while(N > 0){
+		// Only start counting check when the first number '1' is met !
         if(N % 2 == 1 && !flag){
             flag = 1;
         }
